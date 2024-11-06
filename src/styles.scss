@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variaveis';
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+    font-family: "Libre Baskerville", serif;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    /* 62.5% de 16px = 10px */
+}
+
+body {
+    font-size: 1.6rem;
+    /* 1.6rem = 16px */
+}
