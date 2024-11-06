@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BreweryService } from './services/brewery.service';
+import { Brewery } from './interfaces/breweries';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { BreweryService } from './services/brewery.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+
+  breweryList: Brewery[] = []
 
 
   constructor(private readonly brewery: BreweryService) { }
@@ -21,7 +24,10 @@ export class AppComponent implements OnInit {
 
   getBreweryList() {
     return this.brewery.getBreweriesList()
-      .subscribe((res) => console.log(res))
+      .subscribe((res) => {
+        this.breweryList = res
+        console.log(this.breweryList)
+      })
   }
 
 
