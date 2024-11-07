@@ -14,6 +14,9 @@ export class BreweryService {
   getBreweriesList(): Observable<Brewery[]> {
 
     return this.http.get<Brewery[]>(environment.apiEndpoint + '?page=1&per_page=20')
+  }
 
+  getBreweriesListByPage(page: string): Observable<Brewery[]> {
+    return this.http.get<Brewery[]>(environment.apiEndpoint + `?page=${page}&per_page=20`)
   }
 }

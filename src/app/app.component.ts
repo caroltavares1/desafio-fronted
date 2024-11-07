@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BreweryService } from './services/brewery.service';
 import { Brewery } from './interfaces/brewery';
@@ -11,20 +11,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
-  breweryList: Brewery[] = []
+  @ViewChild('button_1') button_1!: ElementRef;
+  breweryList: Brewery[] = [];
+  page_1 = '1';
+  page_2 = '2';
+  page_3 = '3';
 
 
   constructor(private readonly brewery: BreweryService) { }
 
   ngOnInit(): void {
-
     this.getBreweryList()
   }
+  ngAfterViewInit(): void {
+    this.button_1.nativeElement.focus();
+
+  }
+
 
   getBreweryList() {
     return this.brewery.getBreweriesList()
+      .subscribe((res) => {
+        this.breweryList = res
+        this.setColorTag()
+      })
+  }
+
+  changePage(page: string) {
+    return this.brewery.getBreweriesListByPage(page)
       .subscribe((res) => {
         this.breweryList = res
         this.setColorTag()
@@ -43,7 +59,9 @@ export class AppComponent implements OnInit {
       } else if (x.brewery_type == "regional") {
         x.color_tag = '#4985EC' //blue
       } else if (x.brewery_type == "closed") {
-        x.color_tag = '#F39' //blue
+        x.color_tag = '#F39' //pink
+      } else if (x.brewery_type == "proprietor") {
+        x.color_tag = '#F33' //red
       } else {
         x.color_tag = '#7F00FF'; //purple
       }
