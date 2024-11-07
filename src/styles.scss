@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variaveis';
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap');
 *,
 *::before,
 *::after {
-    font-family: "Libre Baskerville", serif;
+    font-family: "Solway", serif;
+    font-weight: 400;
+    font-style: normal;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    margin: 0;
 }
 
 html {

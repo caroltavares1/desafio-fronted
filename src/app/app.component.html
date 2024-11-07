@@ -1,12 +1,30 @@
 <header>
-  <h1>Breweries</h1>
-  <p>A breweries list by Open Brewery DB</p>
+  <div class="header-container">
+    <h1>Breweries</h1>
+    <p>A breweries list by Open Brewery DB</p>
+  </div>
 </header>
 
 <main>
-  <p>lista de cervejas</p>
+  <section>
+    <div class="brewery-list-container">
+      <div class="brewery" *ngFor="let brewery of breweryList">
+        <div class="brewery-container">
+          <h1>{{brewery.name}}</h1>
+          <p>{{brewery.address_1}}</p>
+          <p>{{brewery.city}} <span>{{brewery.state}}</span></p>
+          <p>{{brewery.country}}</p>
+        </div>
+        <div class="brewery-type">
+          <p>{{brewery.brewery_type}}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
 </main>
 
 <footer>
-  <p>Breweries list</p>
+  <p>Breweries List</p>
 </footer>
