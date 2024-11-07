@@ -16,7 +16,7 @@
           <p>{{brewery.country}}</p>
         </div>
         <div class="brewery-type">
-          <p>{{brewery.brewery_type}}</p>
+          <p [ngStyle]="getBreweryStyle(brewery)">{{ brewery.brewery_type }}</p>
         </div>
       </div>
 

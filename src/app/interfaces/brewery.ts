@@ -15,6 +15,7 @@ export interface Brewery {
     phone: string,
     website_url: string,
     state: string,
-    street: string
+    street: string,
+    color_tag: string
 
 }
