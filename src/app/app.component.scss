@@ -36,6 +36,15 @@
         justify-content: flex-start;
         gap: 1rem;
         padding-bottom: 10px;
+        padding-top: 10px;
+
+        #filter{
+            width: 100%;
+            display: flex;
+            gap: 1rem;
+            max-width: 1080px;
+
+        }
 
         section {
             width: 100%;

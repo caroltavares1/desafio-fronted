@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+/* import { RouterOutlet } from '@angular/router'; */
 import { BreweryService } from './services/brewery.service';
 import { Brewery } from './interfaces/brewery';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -15,43 +15,65 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('button_1') button_1!: ElementRef;
   breweryList: Brewery[] = [];
+  breweryTypeList: string[] = [
+    'micro', 'large', 'regional',
+    'contract', 'nano', 'brewpub', 'planning',
+    'bar', 'proprietor', 'closed'
+  ]
   page_1 = '1';
   page_2 = '2';
   page_3 = '3';
+  selectedFilter = ''
 
 
   constructor(private readonly brewery: BreweryService) { }
 
   ngOnInit(): void {
-    this.getBreweryList()
+    this.getBreweryList('1')
   }
   ngAfterViewInit(): void {
     this.button_1.nativeElement.focus();
 
   }
 
-
-  getBreweryList() {
-    return this.brewery.getBreweriesList()
+  getBreweryList(page: string) {
+    return this.brewery.getBreweriesListByPage(page)
       .subscribe((res) => {
         this.breweryList = res
         this.setColorTag()
       })
   }
 
-  changePage(page: string) {
-    return this.brewery.getBreweriesListByPage(page)
+  onSelectChange(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    this.selectedFilter = selectElement.value;
+    this.selectByType('1', +this.selectedFilter)//inicia na pagina 1
+    this.button_1.nativeElement.focus();
+  }
+
+  selectByType(page: string, indice: number) {
+    this.brewery.getBreweriesByType(page, this.breweryTypeList[indice])
       .subscribe((res) => {
         this.breweryList = res
         this.setColorTag()
-        console.log(this.breweryList)
+
       })
+
+  }
+
+  changePage(page: string) {
+    if (this.selectedFilter == '') {
+      this.getBreweryList(page)
+
+    } else {
+      this.selectByType(page, +this.selectedFilter)
+    }
   }
 
   setColorTag() {
     this.breweryList.forEach((x) => {
       if (x.brewery_type == "micro") {
-        x.color_tag = '#56DABF' //green
+        x.color_tag = '#00B7B1' //green
       } else if (x.brewery_type == "brewpub") {
         x.color_tag = '#F2CB30' //yellow
       } else if (x.brewery_type == "contract") {

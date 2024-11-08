@@ -11,12 +11,11 @@ export class BreweryService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getBreweriesList(): Observable<Brewery[]> {
-
-    return this.http.get<Brewery[]>(environment.apiEndpoint + '?page=1&per_page=20')
-  }
-
   getBreweriesListByPage(page: string): Observable<Brewery[]> {
     return this.http.get<Brewery[]>(environment.apiEndpoint + `?page=${page}&per_page=20`)
+  }
+
+  getBreweriesByType(page: string, type: string): Observable<Brewery[]> {
+    return this.http.get<Brewery[]>(environment.apiEndpoint + `?page=${page}&by_type=${type}&per_page=20`)
   }
 }
