@@ -3,21 +3,19 @@
 :host {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     header,
     main,
     footer {
-        display: flex;
-        flex-direction: column;
         border: 0px 0px 2px 0px;
         padding: 40px 20px 40px 20px;
-
     }
 
     header {
-        width: 100%;
-        align-items: center;
-        justify-content: flex-start;
+        display: flex;
+        justify-content: center;
         background-image: $linear;
         color: white;
 
@@ -30,10 +28,12 @@
 
 
     main{
-        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #ffffff;
         width: 100%;
         align-items: center;
-        justify-content: flex-start;
         gap: 1rem;
         padding-bottom: 10px;
         padding-top: 10px;
@@ -76,26 +76,28 @@
                         border-radius: 2px;
                         border: 1.5px solid transparent;
                         background-color: white;
+                        cursor: pointer;
 
-                        h1 {
+                        h2 {
                             margin: 20px 0;
                             font-weight: 500;
                             color: #2c2c2c
                         }
                         p {
                             margin: 2px 0;
-                            color: #2c2c2c
+                            color: #2c2c2c;
+                            font-size: 90%;
                         }
 
                     }
 
                     .brewery-type {
                         width: 250px;
-                        height: 35px;
+                        height: 40px;
                         border-radius: 6px;
                         border: 1.5px solid transparent;
                         background-color: white;
-                        padding: 5px 10px;
+                        padding: 4px 10px;
                         font-size: 1.2rem;
 
                         p {
@@ -135,9 +137,28 @@
         }
     }
 
+    #button-container{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 1080px;
+    }
+
+    #backButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+
+    }
+
 
     footer {
-        align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
         background-color: $cor-footer;
     }
 }

@@ -6,6 +6,7 @@
 </header>
 
 <main>
+  @if (!showBreweryDetail) {
   <div id="filter">
     <p>Filter:</p>
     <select aria-label="filtro de tipo" (change)="onSelectChange($event)">
@@ -19,8 +20,8 @@
     <div class="brewery-list-container">
       @for (brewery of breweryList; track $index) {
       <div class="brewery">
-        <div class="brewery-container">
-          <h1>{{brewery.name}}</h1>
+        <div class="brewery-container" (keypress)="breweryDetail(brewery)" (click)="breweryDetail(brewery)">
+          <h2>{{brewery.name}}</h2>
           <p>{{brewery.address_1}}</p>
           <p>{{brewery.city}} <span>{{brewery.state}}</span></p>
           <p>{{brewery.country}}</p>
@@ -31,14 +32,29 @@
       </div>
       }
     </div>
-
   </section>
   <div id="button-list">
     <button (click)="changePage(page_1)" type="button" #button_1>1</button>
     <button (click)="changePage(page_2)" type="button">2</button>
     <button (click)="changePage(page_3)" type="button">3</button>
   </div>
+  }@else {
+  <div id="button-container">
+    <button id="backButton" type="button" (click)="backToHome()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+      </svg>
+      Back</button>
+  </div>
+  <app-brewery-detail [brewery_id]="brewery_id" />
+  }
+
 </main>
+
+
+
 
 <footer>
   <p>Breweries List</p>

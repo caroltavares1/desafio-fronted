@@ -3,11 +3,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { BreweryService } from './services/brewery.service';
 import { Brewery } from './interfaces/brewery';
 import { CommonModule } from '@angular/common';
+import { BreweryDetailComponent } from './brewery-detail/brewery-detail.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BreweryDetailComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   page_2 = '2';
   page_3 = '3';
   selectedFilter = ''
+  brewery_id: string = ''
+  showBreweryDetail: boolean = false
 
 
   constructor(private readonly brewery: BreweryService) { }
@@ -110,6 +113,15 @@ export class AppComponent implements OnInit, AfterViewInit {
       return brightness > 128 ? '#000000' : '#FFFFFF'; // Preto para cores claras, branco para cores escuras
     }
     return '#fff'; // Caso não consiga interpretar a cor
+  }
+
+  breweryDetail(brewery: Brewery) {
+    this.brewery_id = brewery.id
+    this.showBreweryDetail = true
+  }
+
+  backToHome() {
+    this.showBreweryDetail = false
   }
 
 

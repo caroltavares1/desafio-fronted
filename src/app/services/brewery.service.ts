@@ -18,4 +18,8 @@ export class BreweryService {
   getBreweriesByType(page: string, type: string): Observable<Brewery[]> {
     return this.http.get<Brewery[]>(environment.apiEndpoint + `?page=${page}&by_type=${type}&per_page=20`)
   }
+
+  getBreweryById(id: string): Observable<Brewery> {
+    return this.http.get<Brewery>(environment.apiEndpoint + `/${id}`)
+  }
 }
