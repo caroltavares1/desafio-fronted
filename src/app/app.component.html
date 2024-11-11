@@ -9,12 +9,14 @@
   @if (!showBreweryDetail) {
   <div id="filter">
     <p>Filter:</p>
-    <select aria-label="filtro de tipo" (change)="onSelectChange($event)">
-      <option value="0"></option>
-      @for (breweryType of breweryTypeList; track $index) {
-      <option value={{$index}}>{{breweryType}}</option>
-      }
-    </select>
+    <div class="select-container">
+      <select aria-label="filtro de tipo" (change)="onSelectChange($event)">
+        <option value="0"></option>
+        @for (breweryType of breweryTypeList; track $index) {
+        <option value={{$index}}>{{breweryType}}</option>
+        }
+      </select>
+    </div>
   </div>
   <section>
     <div class="brewery-list-container">
