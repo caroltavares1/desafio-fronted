@@ -12,7 +12,7 @@ import { BreweryDetailComponent } from './brewery-detail/brewery-detail.componen
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   @ViewChild('button_1') button_1!: ElementRef;
   breweryList: Brewery[] = [];
@@ -21,10 +21,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     'contract', 'nano', 'brewpub', 'planning',
     'bar', 'proprietor', 'closed'
   ]
-  page_1 = '1';
-  page_2 = '2';
-  page_3 = '3';
-  selectedFilter = ''
+  page_1: string = '1';
+  page_2: string = '2';
+  page_3: string = '3';
+  activePage: number = 0;
+  selectedFilter: string = ''
   brewery_id: string = ''
   showBreweryDetail: boolean = false
 
@@ -32,11 +33,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private readonly brewery: BreweryService) { }
 
   ngOnInit(): void {
+    this.activePage = 1;
     this.getBreweryList('1')
-  }
-  ngAfterViewInit(): void {
-    this.button_1.nativeElement.focus();
-
   }
 
   getBreweryList(page: string) {
@@ -51,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedFilter = selectElement.value;
     this.selectByType('1', +this.selectedFilter)//inicia na pagina 1
-    this.button_1.nativeElement.focus();
+    this.activePage = 1
   }
 
   selectByType(page: string, indice: number) {
@@ -65,6 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   changePage(page: string) {
+    this.activePage = +page; //define qual pagina esta ativa
     if (this.selectedFilter == '') {
       this.getBreweryList(page)
 

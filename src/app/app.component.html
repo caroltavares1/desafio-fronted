@@ -36,9 +36,9 @@
     </div>
   </section>
   <div id="button-list">
-    <button (click)="changePage(page_1)" type="button" #button_1>1</button>
-    <button (click)="changePage(page_2)" type="button">2</button>
-    <button (click)="changePage(page_3)" type="button">3</button>
+    <button (click)="changePage(page_1)" type="button" [ngClass]="{'isActive': activePage === 1}">1</button>
+    <button (click)="changePage(page_2)" type="button" [ngClass]="{'isActive': activePage === 2}">2</button>
+    <button (click)="changePage(page_3)" type="button" [ngClass]="{'isActive': activePage === 3}">3</button>
   </div>
   }@else {
   <div id="button-container">
