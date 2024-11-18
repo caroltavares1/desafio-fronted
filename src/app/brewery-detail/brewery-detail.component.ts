@@ -20,7 +20,6 @@ export class BreweryDetailComponent implements OnInit {
     this.brewery.getBreweryById(this.brewery_id)
       .subscribe((res) => {
         this.breweryDetail = res
-        console.log(res)
       })
   }
 

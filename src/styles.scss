@@ -26,3 +26,14 @@ body {
     font-size: 1.6rem;
     /* 1.6rem = 16px */
 }
+
+@media (max-width: 800px) {
+    html {
+        font-size: 80%;
+    }
+}
+@media (max-width: 400px) {
+    html {
+        font-size: 70%;
+    }
+}

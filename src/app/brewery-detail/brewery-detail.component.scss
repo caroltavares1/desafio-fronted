@@ -5,9 +5,9 @@
     .brewery-container {
         width: 100%;
         padding: 15px;
-        flex-shrink: 1;
-        flex-grow: 1;
-        height: 320px;
+        flex-grow: 0;/* Impede o item de crescer */
+        flex-shrink: 0;/* Impede o item de encolher */
+        flex-basis: auto;/* Ajusta automaticamente o tamanho de acordo com o conteúdo */
         border-radius: 2px;
         border: 1.5px solid transparent;
         background-color: white;
