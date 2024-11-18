@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 /* import { RouterOutlet } from '@angular/router'; */
 import { BreweryService } from './services/brewery.service';
 import { Brewery } from './interfaces/brewery';

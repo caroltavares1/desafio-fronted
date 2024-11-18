@@ -1,4 +1,4 @@
-<div class="brewery-container">
+<div class="brewery-container" [attr.aria-label]="'Informações sobre a cervejaria '+ breweryDetail.name" [tabIndex]="0">
     <h2>{{breweryDetail.name}}</h2>
     <p>Type: {{breweryDetail.brewery_type}}</p>
     <p>Street: {{breweryDetail.street}}</p>
@@ -6,10 +6,12 @@
     <p>State: {{breweryDetail.state}}</p>
     <p>Postal code: {{breweryDetail.postal_code}}</p>
     <p>Country: {{breweryDetail.country}}</p>
-    <p>Website: <a href={{breweryDetail.website_url}}>{{breweryDetail.website_url}}</a></p>
+    <p>Website: <a aria-label="Ir para Website" [attr.role]="'link'"
+            href={{breweryDetail.website_url}}>{{breweryDetail.website_url}}</a></p>
     <p>Phone: {{breweryDetail.phone}}</p>
     <p>Open in Maps:
-        <button type="button" (click)="openGoogleMaps(breweryDetail.latitude, breweryDetail.longitude)">
+        <button aria-label="Abrir no Google Maps" type="button"
+            (click)="openGoogleMaps(breweryDetail.latitude, breweryDetail.longitude)">
             {{breweryDetail.latitude}}, {{breweryDetail.longitude}}
         </button>
     </p>

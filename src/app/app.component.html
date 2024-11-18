@@ -1,15 +1,15 @@
-<header>
-  <div class="header-container">
+<header aria-label="Informações sobre cervejarias">
+  <section>
     <h1>Breweries</h1>
     <p>A breweries list by Open Brewery DB</p>
-  </div>
+  </section>
 </header>
 
 <main>
   @if (!showBreweryDetail) {
-  <div id="filter">
+  <section id="filter">
     <p>Filter:</p>
-    <div class="select-container">
+    <div class="select-container" [tabIndex]="0">
       <select aria-label="filtro de tipo" (change)="onSelectChange($event)">
         <option value="0"></option>
         @for (breweryType of breweryTypeList; track $index) {
@@ -17,12 +17,13 @@
         }
       </select>
     </div>
-  </div>
+  </section>
   <section>
     <div class="brewery-list-container">
       @for (brewery of breweryList; track $index) {
       <div class="brewery">
-        <div class="brewery-container" (keypress)="breweryDetail(brewery)" (click)="breweryDetail(brewery)">
+        <div class="brewery-container" (keypress)="breweryDetail(brewery)" (click)="breweryDetail(brewery)"
+          [tabIndex]="0" [attr.role]="'button'" [attr.aria-label]="'Ver detalhes da cervejaria ' + brewery.name">
           <h2>{{brewery.name}}</h2>
           <p>{{brewery.address_1}}</p>
           <p>{{brewery.city}} <span>{{brewery.state}}</span></p>
@@ -36,15 +37,18 @@
     </div>
   </section>
   <div id="button-list">
-    <button (click)="changePage(page_1)" type="button" [ngClass]="{'isActive': activePage === 1}">1</button>
-    <button (click)="changePage(page_2)" type="button" [ngClass]="{'isActive': activePage === 2}">2</button>
-    <button (click)="changePage(page_3)" type="button" [ngClass]="{'isActive': activePage === 3}">3</button>
+    <button aria-label="página 1" (click)="changePage(page_1)" type="button" [attr.aria-pressed]="activePage===1"
+      [ngClass]="{'isActive': activePage === 1}">1</button>
+    <button aria-label="página 2" (click)="changePage(page_2)" type="button" [attr.aria-pressed]="activePage===2"
+      [ngClass]="{'isActive': activePage === 2}">2</button>
+    <button aria-label="página 3" (click)="changePage(page_3)" type="button" [attr.aria-pressed]="activePage===3"
+      [ngClass]="{'isActive': activePage === 3}">3</button>
   </div>
   }@else {
   <div id="button-container">
-    <button id="backButton" type="button" (click)="backToHome()">
+    <button aria-label="botão de voltar" id="backButton" type="button" (click)="backToHome()">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
-        viewBox="0 0 16 16">
+        aria-hidden="true" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
           d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
       </svg>
@@ -58,6 +62,6 @@
 
 
 
-<footer>
+<footer aria-label="Rodapé da página">
   <p>Breweries List</p>
 </footer>
