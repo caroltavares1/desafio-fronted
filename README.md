@@ -4,7 +4,7 @@ Projeto feito com Angular 17.2.2 e o deploy gerado com o Firebase.
 
 Ideia original do projeto [aqui](https://github.com/chaordic/desafio-frontent)
 
-Versão Final aqui: `https://desafio-frontend-5c427.web.app/`
+Versão Final aqui: [https://desafio-frontend-5c427.web.app/](https://desafio-frontend-5c427.web.app/)
 
 ## Testes com Lighthouse
 
