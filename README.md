@@ -1,27 +1,17 @@
-# DesafioFrontend
+# Desafio Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+Projeto feito com Angular 17.2.2 e o deploy gerado com o Firebase.
 
-## Development server
+Ideia original do projeto [aqui](https://github.com/chaordic/desafio-frontent)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Versão Final aqui: `https://desafio-frontend-5c427.web.app/`
 
-## Code scaffolding
+## Testes com Lighthouse
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[🟢](https://unicode-explorer.com/c/1F7E2) Desempenho 93%
 
-## Build
+[🟢](https://unicode-explorer.com/c/1F7E2) Acessibilidade 95%
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[🟢](https://unicode-explorer.com/c/1F7E2) Práticas recomendadas 100%
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[🟢](https://unicode-explorer.com/c/1F7E2) SEO 91%
